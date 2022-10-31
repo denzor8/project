@@ -1,0 +1,277 @@
+/* m0-a+tab   ьудет margin: 0 auto*/
+/* 
+1 normalize
+bgp -background-positio: center; 	отвечает за центрирование картинки
+bgrn -background-repeat: no-repeat; отвечает чтобы картинка не повторялось*
+bgzc -background-size: cover; 		отвечает за растянутость
+background-color: transparent; - 	прозрачный цвет у кнопок 
+jcsb 
+jcc 
+jcce
+заметь он поставил container то есть три блока 
+header 
+miidle 
+footer и в каждом блоке он им задал определенную 
+48;28 тут будет переменная которой указыватся родители и передается дочернему если указать переменную 
+	"--offset: 11px и вызывается переменная вот так var(--offset)"
+обязательно при этом указать позицию релатив так как смысл уж меняется 
+можно выбрать текст который выдлелил и могу их сразу взять в скобку 
+то 'есть вот так' нужно на английский еще кстати 
+	currentColor- по умолчанию берет тот цвет который был указан
+	font-family: var(--font-family)
+
+	"transform: translateY(4px); чтобы можно  было менять высоту 
+	на ширину будет "X" "
+
+ */
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins';
+}
+*::before,
+*::before {
+	box-sizing: border-box;
+}
+@font-face {
+	font-family: 'Poppins';
+	src: url(../fonts/Poppins-Regular.woff) format(woff);
+	font-display: swap;
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Poppins';
+	src: url(../fonts/Poppins-Medium.woff) format(woff);
+	font-display: swap;
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Poppins';
+	src: url(../fonts/Poppins-Bold.woff) format(woff);
+	font-display: swap;
+	font-weight: 700;
+	font-style: normal;
+}
+/* ---------------- будет переменная для того чтобы можно было просто один раз поменять */
+
+:root {
+	--font-family: 'Poppins', sans-serif;
+}
+
+/* кстати это переменная будет работать на весь сайт  ------------------ */
+
+body {
+	font-family: var(--font-family);
+	font-weight: 400;
+}
+img {
+	max-width: 100%;
+}
+
+/* этот модификатор можно использовывать сразу для списков */
+.list-reset {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.btn-reset {
+	padding: 0;
+	border: 0;
+	background-color: transparent; /* прозрачный цвет у кнопок */
+	cursor: pointer; /* курсос будет */
+}
+
+/* чтобы фоновая картинка была сначала тег header добавил asolute  */
+.container {
+	max-width: 1140px; /* изначально было 1110px так как я указал паддинг 15+15=30 1110+30=1140*/
+	padding: 0 15px;
+	margin: 0 auto;
+}
+.link {
+	display: inline-flex;
+	/* text-align: center; */
+	min-width: 114px;
+	max-height: 24px;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
+	text-decoration: none;
+	color: #d4d6d4;
+	transition: color 0.3s ease-in;
+}
+.link > svg {
+	fill: currentColor;
+	max-width: 15px;
+	max-height: 15px;
+	transform: translateY(4px);
+}
+.link__get {
+	border-bottom: 1px solid currentColor;
+	text-indent: 10px;
+}
+.link:hover {
+	color: #ffd723;
+	letter-spacing: 0.2px;
+}
+.header {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 24px 0;
+	width: 100%;
+	/* background-color: rgba(0, 0, 0, 0.5); задает такой приятный bgc */
+	/* чтобы по умолчанию были с краю  */
+	/* ширину 100% потому что абсолют будедт зависеть от .hero  */
+}
+.header-container {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbo;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-between;
+	align-items: center; /* центрирует по вертикали */
+}
+.burger {
+	--offset-horizontal: 11px;
+	--offset-vertical: 14px;
+	padding: var(--offset-vertical) var(--offset);
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	background-color: #f5f6f7;
+}
+.burger-line {
+	position: absolute;
+	left: var(--offset);
+	top: var(--offset-vertical);
+	display: inline-block;
+	width: calc(100% - (var(--offset-horizontal) * 2));
+	height: 2px;
+	background: #000;
+	transform: translateX(-50%);
+}
+.burger-line:nth-child(2) {
+	top: calc(var(--offset-vertical) + 6px);
+}
+.burger-line:nth-child(3) {
+	top: calc(var(--offset-vertical) + 12px);
+}
+
+.hero {
+	/* max-width: 1441px; */
+	min-height: 811px;
+	padding-top: 189px;
+	padding-bottom: 210px;
+	background-image: url(../images/hero-bg.jpg);
+	background-position: center; /* отвечает за центрирование картинки */
+	background-size: cover; /* отвечает за растянутость */
+	background-repeat: no-repeat; /* отвечает чтобы картинка не повторялось*/
+}
+/* не забывай про нормалайз тоже добвляешь этот стиль в html сперва 
+	монжо по дефолту использовывать эти стили */
+.hero-content {
+	max-width: 539px;
+	/* max-height: 222px; */
+	color: #fff;
+}
+
+.hero__subtittle {
+	display: inline-block;
+	margin-bottom: 22px;
+	font-size: 14px;
+	line-height: 21px;
+	/* 121+92(высота header Devtools посмотреть )-24 24 потому что задал паддинг 24px=189
+	 и указать топ на класс '.hero' 
+	 */
+}
+.hero-tittle {
+	margin: 0;
+	margin-bottom: 24px;
+	font-weight: 700;
+	font-size: 60px;
+	line-height: 74px;
+}
+.hero-descr {
+	margin: 0;
+	margin-bottom: 45px;
+	max-width: 581px;
+	max-height: 55px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+}
+.hero-link {
+	color: #ffd723;
+}
+.hero-link:hover {
+	color: #fddf57;
+}
+
+.services {
+	margin-top: 140px;
+}
+.inlane-block{
+	display: inline;
+}
+.contanier-block{
+	margin: 0;
+	padding: 0;
+}
+.site-tittle {
+	width: 607px;
+	height: 92px;
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 46px;
+	color: #4d533c;
+	margin-bottom: 60px;
+}
+.services-list {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbo;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-around;
+}
+.services-item {
+	row-gap: 56px;
+	max-width: 255px;
+	max-height: 309px;
+	padding: 27px 30px 0px 30px;
+	margin-bottom: 56px;
+
+}
+.services-subtittle {
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 34px;
+	text-transform: uppercase;
+	color: #4d533c;
+	margin-bottom: 20px;
+}
+.services-descr {
+	max-width: 194px;
+	max-height: 104px;
+	margin-top: 56px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 26px;
+	color: rgba(33, 56, 66, 0.6);
+}
+.services-link {
+	
+}
+.read-more{
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 190px;
+}	
